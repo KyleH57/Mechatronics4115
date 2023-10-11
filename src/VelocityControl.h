@@ -24,7 +24,7 @@ private:
     float computeMovingAverage(float newVal);
 
 public:
-    VelocityControl(int encoderPinA, int encoderPinB, int motorPWMPin, int motorIn1Pin, int motorIn2Pin, float _kp);
+    VelocityControl(int encoderPinA, int encoderPinB, int motorPWMPin, int motorIn1Pin, int motorIn2Pin);
 
     void setSetpoint(int _setpoint);
     void setKp(float _kp);

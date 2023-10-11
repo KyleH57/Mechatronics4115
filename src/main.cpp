@@ -13,23 +13,25 @@
 unsigned long previousMillis = 0; // will store last time motor was updated
 const long interval = 50;         // interval at which to run motor (milliseconds)
 
-VelocityControl motorControl(19, 18, 10, 13, 12, 0.5); // RR
+VelocityControl frontLeftMotor(7, 8, 9, 22, 23);   // FL
+VelocityControl frontRightMotor(6, 2, 3, 24, 25);  // FR
+VelocityControl rearLeftMotor(11, 4, 5, 26, 27);   // RL
+VelocityControl rearRightMotor(19, 18, 10, 13, 12); // RR
 
 void setup()
 {
   pinMode(22, INPUT);
-  // analog read on pin A8
-  pinMode(23, INPUT);
+
   Serial.begin(9600);
 
   // Set the desired velocity setpoint in counts/sec
-  motorControl.setSetpoint(600);
+  rearRightMotor.setSetpoint(600);
 
   // Set the PID and feed-forward gains based on tuning
-  motorControl.setKp(0.3); // Proportional gain
-  motorControl.setKi(0.0); // Integral gain
-  motorControl.setKd(0);   // Derivative gain
-  motorControl.setKf(0.3); // Feed-forward gain
+  rearRightMotor.setKp(0.3); // Proportional gain
+  rearRightMotor.setKi(0.0); // Integral gain
+  rearRightMotor.setKd(0);   // Derivative gain
+  rearRightMotor.setKf(0.3); // Feed-forward gain
 }
 
 void loop()
@@ -37,5 +39,5 @@ void loop()
 
   unsigned long currentMillis = millis();
 
-  motorControl.control();
+  rearRightMotor.control();
 }
