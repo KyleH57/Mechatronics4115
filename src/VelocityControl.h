@@ -19,12 +19,13 @@ private:
 
     static const int BUFFER_SIZE = 5;  // Size of the moving average buffer; adjust as necessary
     float velocityBuffer[BUFFER_SIZE];
+    float filteredVelocity;
     int bufferIndex;
 
     float computeMovingAverage(float newVal);
 
 public:
-    VelocityControl(int encoderPinA, int encoderPinB, int motorPWMPin, int motorIn1Pin, int motorIn2Pin);
+    VelocityControl(int encoderPinA, int encoderPinB, int motorPWMPin, int motorIn1Pin, int motorIn2Pin, float _kp);
 
     void setSetpoint(int _setpoint);
     void setKp(float _kp);
@@ -32,6 +33,9 @@ public:
     void setKd(float _kd);
     void setKf(float _kf);
     void control();
+
+    void printError();
+
 };
 
 #endif // VELOCITYCONTROL_H

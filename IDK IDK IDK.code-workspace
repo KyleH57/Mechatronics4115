@@ -1,0 +1,24 @@
+{
+	"folders": [
+		{
+			"path": "../Lab1 3B"
+		},
+		{
+			"name": "Lab 15A",
+			"path": "../Lab 15A"
+		},
+		{
+			"name": "Lab2",
+			"path": "../Lab2"
+		},
+		{
+			"name": "Encoder Test",
+			"path": "../Encoder Test"
+		},
+		{
+			"name": "Robot 1",
+			"path": "."
+		}
+	],
+	"settings": {}
+}

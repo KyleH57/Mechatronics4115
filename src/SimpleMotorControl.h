@@ -10,6 +10,8 @@ class SimpleMotorControl {
     int in2Pin;
 
   public:
+      SimpleMotorControl() {}   // Default constructor
+
     SimpleMotorControl(int _pwmPin, int _in1Pin, int _in2Pin);
     void run(int pwmValue);
 };

@@ -1,10 +1,15 @@
 #include "Encoder.h"
 
-Encoder* Encoder::instance = nullptr;
+Encoder* Encoder::encoderPtr = nullptr;
 
-Encoder::Encoder(int _pinA, int _pinB) 
-    : pinA(_pinA), pinB(_pinB), counts(0), lastPinAState(LOW), lastUpdateTime(0), velocity(0.0) {
-    instance = this;  // Set the instance pointer to this object
+Encoder::Encoder(int _pinA, int _pinB)
+{
+    pinA = _pinA;
+    pinB = _pinB;
+    counts = 0;
+    lastPinAState = LOW;
+    lastUpdateTime = 0;
+    encoderPtr = this;  // Set the encoderPtr pointer to this object
     pinMode(pinA, INPUT_PULLUP);
     pinMode(pinB, INPUT_PULLUP);
     attachInterrupt(digitalPinToInterrupt(pinA), isrWrapper, CHANGE);
@@ -12,8 +17,8 @@ Encoder::Encoder(int _pinA, int _pinB)
 }
 
 void Encoder::isrWrapper() {
-    if(instance) {
-        instance->isr();
+    if(encoderPtr) {
+        encoderPtr->isr();
     }
 }
 

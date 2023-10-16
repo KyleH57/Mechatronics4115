@@ -12,9 +12,9 @@ private:
     volatile int lastPinAState;
     volatile unsigned long lastUpdateTime;
     volatile float velocity;
-    static Encoder *instance; // Pointer to the instance of the Encoder class
+    static Encoder *encoderPtr; // Pointer to the encoderPtr of the Encoder class
 
-    static const unsigned long TIMEOUT = 50000; // Timeout in microseconds, e.g., 100ms
+    static const unsigned long TIMEOUT = 100000; // Timeout in microseconds, e.g., 100ms
 
     static void isrWrapper();
     void isr();
@@ -26,6 +26,7 @@ public:
     long getCounts() const;
     float getVelocity() const;
     void resetCounts();
+
 
     void update(); // New method to update velocity based on timeout
 };
